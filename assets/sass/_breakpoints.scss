@@ -1,0 +1,239 @@
+@use 'mixins' as m;
+$breakpoints: (
+  mobile: 680px,
+  mobile-lg: 820px,
+  tablet: 1024px,
+  laptop: 1280px,
+  desktop-lg: 1800px
+);
+
+@mixin breakpoint($breakpoint, $direction) {
+
+  // Get the breakpoint value.
+  $breakpoint-value: map-get($breakpoints, $breakpoint);
+  
+  @if $direction == min {
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  }
+} 
+
+// MOBILE
+
+// header
+
+.hero{
+  @include breakpoint(mobile,min ){
+    &__image{
+      max-width: 60%;
+    }
+
+    &__content{
+      gap: 2.5rem;
+      .hero__actions{
+        flex-direction: row;
+
+        .cta-m{
+          display: inline-block;
+          width: auto;
+        }
+      }
+    }
+    
+  }
+}
+
+.main{
+  @include breakpoint(mobile, min){
+    .diversify{
+
+      max-width: 56rem;
+      
+      &__img{
+        width: 420px;
+        background-position: center;
+      }
+    }
+
+  }
+}
+.footer{
+  @include breakpoint(mobile,min ){
+
+    &__nav{
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      ul{
+        width: 45%;
+      }
+      
+    }
+  }
+}
+
+// MENU
+.header{
+  @include breakpoint(mobile-lg,min ){
+
+    &__icon{
+      display: none;
+    }
+
+    &__navbar{
+      display: flex;
+      gap: 4rem;
+    }
+    &__actions{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+.hero{
+  @include breakpoint(mobile-lg,min ){
+    min-height: 90vh;
+    &__image{
+      max-width: 50%;
+    }
+  }
+}
+.main{
+  @include breakpoint(mobile-lg, min){
+  gap: 10rem;
+
+  }
+}
+.footer{
+  @include breakpoint(mobile-lg,min ){
+    &__text{
+      max-width: 60rem;
+    }
+  }
+}
+
+
+// TABLET
+.header{
+  @include breakpoint(tablet,min ){
+    &__actions{
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .cta{
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        &:hover{
+          text-decoration: underline;
+        }
+        &-m{
+          width: 100px;
+        }
+      }
+    }
+  }
+}
+.hero{
+  @include breakpoint(tablet, min){
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    place-content: center;
+    column-gap: 0;
+    min-height: 95vh;
+
+    &__image{
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      max-width: 100%;
+    }
+
+
+    &__rated{
+      display: flex;
+      gap: 2rem;
+      color: black;
+    }
+
+    &__content{
+      grid-column:  1 / 2;
+      grid-row: 1 / 2;
+      align-items: flex-start;
+
+      .title{
+        width: 100%;
+        font-size: 4.3rem;
+      }
+
+      .hero__actions{
+        justify-content: flex-start;
+       
+      }
+
+      .hero__option{
+        @include m.flex(2rem )
+
+      }
+
+    }
+  }
+}
+
+.main{
+  @include breakpoint(tablet,min ){
+    .portfolio{
+
+      .title{
+        max-width: 60rem;
+        font-size: 3.6rem;
+      }
+    }
+  }
+}
+.footer{
+  @include breakpoint(tablet,min ){
+
+    &__nav{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+  }
+
+}
+
+
+// LAPTOP
+.main{
+  @include breakpoint(tablet,min ){
+    padding-block: 10rem;
+    gap: 15rem;
+
+    .portfolio{
+
+      .cards{
+        padding-top: 8rem;
+      }
+    }
+
+    .diversify{
+      max-width: 100%;
+      display:  grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+
+      &__content{
+        padding-top: 0;
+
+        .cta-bg{
+          display: inline-block;
+          width: 50%;
+        }
+
+      }
+    }
+    
+  }
+}

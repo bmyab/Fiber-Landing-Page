@@ -1,0 +1,254 @@
+@use 'mixins' as m;
+@use 'utils' as u;
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-size: 1.6rem;
+  font-family: 'Rubik', sans-serif;
+  color: u.$colorText;
+  background-color:u.$colorBg;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+.paragraph{
+  line-height: 2.4rem;
+}
+// HEADER
+.header{
+
+  @include m.flex();
+  justify-content:space-between ;
+  width: calc(100% - 10%);
+  margin-inline: auto;
+  max-width: 130rem;
+
+  position: relative;
+  padding-top: 2rem;
+  
+  &__logo{
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: u.$colorHeadings;
+  }
+  
+  &__navbar{
+    display: none;
+
+    .item{
+      list-style: none;
+
+      .link{
+        color: u.$colorHeadings;
+        font-weight: 500;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__icon{
+    width: 20px;
+    height: 20px;
+    background-image: url('../svg/Hamburger\ Menu.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+
+  &__actions{
+    display: none;
+  }
+}
+
+// HERO
+.hero{
+
+  display: grid;
+  gap: 4rem;
+  padding-block-end:4rem;
+  max-width: 130rem;
+  margin-inline: auto;
+
+
+
+  &__image{
+    max-width: 80%;
+    margin-inline: auto;
+  }
+
+  &__rated{
+    display: none;
+  }
+  &__content{
+    width: calc(100% - 15%);
+    margin-inline: auto;
+
+    @include m.flex(1.5rem, column);
+    align-items: flex-start;
+
+
+    .title{
+      font-size: 3.4rem;
+      color: u.$colorHeadings;
+    }
+
+    .hero__actions{
+      width: 100%;
+      @include m.flex(1rem , column)
+    }
+
+    .hero__option{
+      
+      .option{
+        @include m.flex();
+        justify-content:flex-start;
+
+      }
+    }
+  }
+}
+// MAIN 
+.main{
+  display: grid;
+  gap: 5rem;
+  padding-block: 5rem;
+  background-color: white;
+  max-width: 130rem;
+  margin-inline: auto;
+
+  // Portfolio
+  .portfolio{
+    
+    .fiber{
+      color: u.$colorBtn;
+      font-weight: 500;
+      padding-bottom: 1rem;
+    }
+
+    .title{
+      font-size: 3.4rem;
+      color: u.$colorHeadings;
+    }
+    .cards{
+      padding-top: 4rem;
+    }
+  }
+
+  // Diversify
+  .diversify{
+    color: white;
+    background-color: u.$colorBtn;
+    border-radius: 0.5rem;
+
+    @include m.flex(5rem , column);
+
+    &__content{
+      padding-inline: 13%;
+      padding-top: 5rem;
+
+      .paragraph{
+        font-weight: 300;
+        padding-block: 1rem;
+      }
+
+      .subtitle{
+        font-size: 2.8rem;
+        font-weight: 500;
+      }
+    }
+
+    &__img{
+      background-image: url('../images/page.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: -122px;
+      width: 250px;
+      height: 350px;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+  }
+}
+
+// Footer
+.footer{
+  background-color: u.$colorBg;
+  padding-block: 5rem;
+
+  .container{
+
+    @include m.flex(3rem , column);
+    align-items: flex-start;
+    max-width: 130rem;
+  }
+
+  &__text{
+  
+    .footer__logo{
+        font-size: 1.8rem;
+        color: u.$colorHeadings;
+        font-weight: 500;
+      }
+  
+      p{
+        padding-top: 0.5rem;
+      }
+    }
+  
+  &__nav{
+      @include m.flex(2.5rem , column);
+      align-items: flex-start;
+
+      ul{
+        @include m.flex(1rem , column);
+        align-items: flex-start;
+        
+        h3{
+          font-size: 1.6rem;
+          color: u.$colorHeadings;
+        } 
+
+        li{
+          a{
+            color: u.$colorText;
+
+            &:hover{
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+  }
+
+  .me{
+    p{
+      font-size: 1.3rem;
+      a{
+        color: u.$colorHeaginsfooter;
+        font-weight: 500;
+
+        &:hover{
+          color: u.$colorSmall;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+    
+}
